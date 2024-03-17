@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event-Delegation Project</title>
+    <style>
+      * {
+        margin: 30px;
+        padding: 20px;
+      }
+
+      body {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+        font-family:Cambria, Cochin, Georgia, Times, serif;
+      }
+
+      h1 {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .mainbody {
+        display: flex;
+        color: white;
+        gap: 2px;
+        flex-wrap: wrap;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Delegation - Periodic Table</h1>
+    <section class="mainbody"></section>
+    <script>
+      //Function to create peridic table element
+      const createPeriodicElement = (symbol, atomicNumber, name) => {
+        const element = document.createElement("div");
+        element.classList.add("element");
+        element.innerHTML = symbol;
+        element.style.border = "1px solid white";
+        element.style.padding = "10px";
+        element.style.margin = "10px";
+        element.style.borderRadius = "10px";
+
+        element.setAttribute("data-atomic-number", atomicNumber);
+        element.setAttribute("data-element-name", name);
+
+        return element;
+      };
+      //Event Handler for periodic table element click
+      const handleElementClick = (event) => {
+        const target = event.target;
+        if(target.classList.contains("element")){
+            const atomicNumber = target.getAttribute("data-atomic-number");
+            const elementName = target.getAttribute("data-element-name");
+            alert(`Atomic Number: ${atomicNumber}\n Element Name: ${elementName}`);
+        }
+      }
+
+      //Function to initialize the periodic table
+      function intiaalizePeriodicTable() {
+        //create 50 periodic table elements
+        const mainBody = document.querySelector(".mainbody");
+        for (let i = 1; i <= 50; i++) {
+          const element = createPeriodicElement(`Elem${i}`, i, `Element ${i}`); //hard coded as to create dynamic nature
+          mainBody.append(element);
+        }
+
+        //Add event delegation to the container
+        mainBody.addEventListener("click", handleElementClick);
+      }
+
+      //Initialize the periodic table
+      intiaalizePeriodicTable();
+    </script>
+  </body>
+</html>

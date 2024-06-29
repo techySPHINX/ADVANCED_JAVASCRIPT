@@ -6,7 +6,7 @@ function readFile(filename, callback) {
       } else {
         callback(null, content);
       }
-    }, 1000); // Simulate async operation
+    }, 1000); 
   }
   
 

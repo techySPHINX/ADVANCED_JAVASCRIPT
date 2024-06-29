@@ -5,17 +5,17 @@ async function runTasksInParallel(tasks) {
   
   // Example tasks (assuming they are async functions)
   const task1 = async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate some work
+    await new Promise(resolve => setTimeout(resolve, 1000)); 
     return 'Result of task 1';
   };
   
   const task2 = async () => {
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate some work
+    await new Promise(resolve => setTimeout(resolve, 2000));
     return 'Result of task 2';
   };
   
   const task3 = async () => {
-    await new Promise(resolve => setTimeout(resolve, 3000)); // Simulate some work
+    await new Promise(resolve => setTimeout(resolve, 3000));
     return 'Result of task 3';
   };
   

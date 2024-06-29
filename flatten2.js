@@ -6,7 +6,7 @@ function flattenObject(obj, prefix = '') {
       const newKey = prefix ? `${prefix}.${key}` : key; // Create key with prefix if needed
   
       if (typeof value === 'object' && value !== null) {
-        // Recursively flatten nested objects
+       
         Object.assign(flattened, flattenObject(value, newKey));
       } else {
         // Add key-value pair directly for non-objects
@@ -16,7 +16,6 @@ function flattenObject(obj, prefix = '') {
     return flattened;
   }
   
-  // Example object with nested properties
   const nestedObject = {
     name: 'Alice',
     address: {

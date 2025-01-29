@@ -31,10 +31,14 @@ async function runTasksInSeries(tasks) {
     //USING RECURSION
 
     async function runTasksInSeriesRecursive(tasks, index = 0) {
-        if (index >= tasks.length) return; // Base case: all tasks completed
-        await tasks[index]();  // Execute the current task
-        runTasksInSeriesRecursive(tasks, index + 1); // Call recursively for next task
+      if (index >= tasks.length) {
+        console.log('All tasks completed');
+        return; // Base case: all tasks completed
       }
+      console.log(`Running task ${index + 1}`);
+      await tasks[index]();  // Execute the current task
+      runTasksInSeriesRecursive(tasks, index + 1); // Call recursively for next task
+    }
       
       // Usage is same as the previous example
       
